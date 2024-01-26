@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+import { ComponentsModule } from '../components/components.module';
+import { SharedModule } from "../shared/shared.module";
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { GraficaComponent } from './grafica/grafica.component';
 import { PagesComponent } from './pages.component';
-import { SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
@@ -24,9 +27,10 @@ import { SharedModule } from "../shared/shared.module";
     ],
     imports: [
         CommonModule,
+        RouterOutlet,
         FormsModule,
         SharedModule,
-        RouterOutlet,
+        ComponentsModule
     ]
 })
 export class PagesModule { }
