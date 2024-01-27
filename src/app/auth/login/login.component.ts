@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+    constructor(private route: Router){
+
+    }
+
+
+  login(){
+    this.route.navigateByUrl('/')
+  }
 }
