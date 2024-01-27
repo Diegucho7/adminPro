@@ -7,7 +7,7 @@ import { ChartData } from 'chart.js';
   styles: ``
 })
 export class GraficaComponent {
-
+  public titulo: string = 'Estadisticas'
   
   };
 
