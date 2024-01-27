@@ -11,6 +11,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { GraficaComponent } from './grafica/grafica.component';
 import { PagesComponent } from './pages.component';
 import { NgChartsModule } from 'ng2-charts';
+import { DonaComponent } from '../components/dona/dona.component';
 
 
 @NgModule({
@@ -25,13 +26,14 @@ import { NgChartsModule } from 'ng2-charts';
         ProgressComponent,
         GraficaComponent,
         PagesComponent,
+        DonaComponent
     ],
     imports: [
         CommonModule,
         RouterOutlet,
         
         NgChartsModule, //Modulos de Graficos
-
+        
         FormsModule,
         SharedModule,
         ComponentsModule
