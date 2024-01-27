@@ -12,6 +12,7 @@ import { GraficaComponent } from './grafica/grafica.component';
 import { PagesComponent } from './pages.component';
 import { NgChartsModule } from 'ng2-charts';
 import { DonaComponent } from '../components/dona/dona.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 @NgModule({
@@ -20,13 +21,15 @@ import { DonaComponent } from '../components/dona/dona.component';
         ProgressComponent,
         GraficaComponent,
         PagesComponent,
+        AccountSettingsComponent,
     ],
     exports: [
         DashboardComponent,
         ProgressComponent,
         GraficaComponent,
         PagesComponent,
-        DonaComponent
+        DonaComponent,
+        AccountSettingsComponent
     ],
     imports: [
         CommonModule,
