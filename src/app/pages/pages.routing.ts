@@ -5,6 +5,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { GraficaComponent } from './grafica/grafica.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PomesasComponent } from './pomesas/pomesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -18,6 +20,8 @@ const routes: Routes = [
       {path: 'progress', component: ProgressComponent},
       {path: 'grafica1', component: GraficaComponent},
       {path: 'acount-settings', component: AccountSettingsComponent},
+      {path: 'promesas', component: PomesasComponent},
+      {path: 'rxjs', component: RxjsComponent},
     ]
   
   

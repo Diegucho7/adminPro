@@ -13,6 +13,8 @@ import { PagesComponent } from './pages.component';
 import { NgChartsModule } from 'ng2-charts';
 import { DonaComponent } from '../components/dona/dona.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PomesasComponent } from './pomesas/pomesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         GraficaComponent,
         PagesComponent,
         AccountSettingsComponent,
+        PomesasComponent,
+        RxjsComponent,
     ],
     exports: [
         DashboardComponent,
