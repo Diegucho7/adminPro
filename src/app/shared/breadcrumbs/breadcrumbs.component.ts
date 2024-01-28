@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { every } from 'rxjs';
+import { ActivationEnd, Router } from '@angular/router';
+import { filter,map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -9,14 +9,25 @@ import { every } from 'rxjs';
 })  
 export class BreadcrumbsComponent  {
 
+    public titulo! : string;
+
   constructor(private router: Router){
-
-    this.router.events.subscribe( event =>{
-      console.log(event);
-    })
-
-
+    this.getDataRuta(); 
   }
 
+  
+  getDataRuta(){
+    this.router.events
+    .pipe(
+            filter<any> ( event=> event instanceof ActivationEnd),
+            filter((event:ActivationEnd) => event.snapshot.firstChild === null),
+            map((event:ActivationEnd) => event.snapshot.data),
+    )
+    .subscribe(({titulo}) =>{
+      this.titulo = titulo;
+      document.title =`Academy - ${titulo}`;
+    });
+
+  }
 
 }
