@@ -14,13 +14,13 @@ export class AccountSettingsComponent implements OnInit {
   constructor(private settingService: SettingsService){}
   
   ngOnInit(): void {
-    this.settingService.checkCurrientTheme();
+    this.settingService.checkCurrentTheme();
   }
   
     
   ChangeTheme(theme:string ){
 
-    this.settingService.ChangeTheme(theme);
+    this.settingService.changeTheme(theme);
     
   }
   

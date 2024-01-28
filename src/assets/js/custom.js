@@ -4,8 +4,8 @@ Author: Wrappixel
 Email: niravjoshi87@gmail.com
 File: js
 */
-const customInitFuction = () =>{
 
+const customInitFunctions = () => {
     $(function() {
         "use strict";
         $(function() {
@@ -82,8 +82,6 @@ const customInitFuction = () =>{
         }).trigger('blur');
     
         // ============================================================== 
-        
-        // ============================================================== 
         //tooltip
         // ============================================================== 
         $(function() {
@@ -142,6 +140,6 @@ const customInitFuction = () =>{
         });
     
     });
-} 
+}
 
-customInitFuction();
+customInitFunctions();
