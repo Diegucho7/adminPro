@@ -5,9 +5,9 @@ import { environment  } from '../../environments/environment';
 
 
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 const base_Url= environment.base_url;
 export class UsuarioService {
   
@@ -15,7 +15,7 @@ export class UsuarioService {
 
   crearUsuario(formData: RegisterForm){
 
-    // return this.http.post(`${ base_Url }  `); 
+    return this.http.post(`${ base_Url } /usuarios`,formData); 
 
   }
 }
