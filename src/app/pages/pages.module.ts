@@ -38,7 +38,6 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     imports: [
         CommonModule,
         RouterOutlet,
-        
         NgChartsModule, //Modulos de Graficos
         
         FormsModule,

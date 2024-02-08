@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from '../services/settings.service';
 
-// declare function customInitFuction():any; 
+declare function customInitFuction():any; 
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',

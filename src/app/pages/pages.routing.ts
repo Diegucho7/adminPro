@@ -19,7 +19,7 @@ const routes: Routes = [
       {path: '', component: DashboardComponent, data: {titulo: 'Dashboard'}},
       {path: 'progress', component: ProgressComponent, data: {titulo: 'Progreso'}},
       {path: 'grafica1', component: GraficaComponent, data: {titulo: 'Grafica'}},
-      {path: 'acount-settings', component: AccountSettingsComponent},
+      {path: 'acount-settings', component: AccountSettingsComponent, data: {titulo: 'acount-settings'}},
       {path: 'promesas', component: PomesasComponent, data: {titulo: 'Promesas'}},
       {path: 'rxjs', component: RxjsComponent, data: {titulo: 'Rxjs'}},
     ]

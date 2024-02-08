@@ -13,6 +13,8 @@ export class SidebarComponent {
   menuItems: any[]; 
   constructor(sidebarService: SidebarService){
     this.menuItems = sidebarService.menu
+    console.log(this.menuItems)
+
   }
   
 
