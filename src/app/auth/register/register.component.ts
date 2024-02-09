@@ -1,14 +1,16 @@
+import Swal from 'sweetalert2'
   import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControlOptions, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-
+  
+  constructor(private fb: FormBuilder,
+              private usuarioService: UsuarioService){}
   public formSubmitted = false;
 
   public registerForm = this.fb.group({
@@ -21,31 +23,39 @@ export class RegisterComponent {
     terminos: [true, Validators.requiredTrue]
     
     
-  }, {
+  },
+  {
     validators: this.passwordsIguales('password','password2')
-  });
+  } );
 
-  constructor(private fb: FormBuilder,
-              private usuarioService: UsuarioService){}
+
   
   crearUsuario(){
     this.formSubmitted = true;  
     console.log( this.registerForm.value);
 
     if (this.registerForm.invalid){
+      // console.log('algo salio mal')
       return;
     }else{
       //Realiza el posteo
-    //   this.usuarioService.crearUsuario(this.registerForm.value)
-    //                       .subscribe({ resp  => {
-    //                         console.log('usuario creado')
-    //                         console.log(resp);
+      this.usuarioService.crearUsuario( this.registerForm.value)
+                          .subscribe( resp  => {
+                            console.log('usuario creado')
+                            console.log(resp);
+                          }, (err) => {
 
-    // }
-      
-    // });
+                            // Si sucede un error
+
+                            Swal.fire('Error',err.error.msg,'error');
+
+                          });
+                     
+ 
+  
+    }
   }
-}
+
   campoNoValido(campo:string):boolean{
     if( this.registerForm.get(campo)!.invalid && this.formSubmitted){
       return true;
