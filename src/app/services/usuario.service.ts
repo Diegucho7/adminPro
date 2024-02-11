@@ -6,6 +6,7 @@ import { environment  } from '../../environments/environment';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
+declare const google:any;
 
 const base_url = environment.base_url;
 
@@ -14,10 +15,23 @@ const base_url = environment.base_url;
 })
 export class UsuarioService {
   
-  
+  handleCredentialResponse: any;
   constructor(private http: HttpClient,
     private router: Router,
-    private ngZone: NgZone) { }
+    private ngZone: NgZone,) {
+      
+    }
+
+  logout(){
+    const email=localStorage.getItem('email')|| '';
+    google.accounts.id.revoke(email,()=> {
+      this.ngZone.run(()=>{
+        this.router.navigateByUrl('/login');
+      })
+      localStorage.removeItem('token');
+      localStorage.removeItem('email');
+    })
+  }
 
   validarToken(): Observable<boolean> {
     const token = localStorage.getItem('token') || '';
@@ -59,6 +73,7 @@ export class UsuarioService {
                       tap((resp:any) =>{
                         console.log(resp);
                         localStorage.setItem('token',resp.token);
+                        localStorage.setItem('email',resp.email);
                       }
                       )
                     )
@@ -68,10 +83,13 @@ export class UsuarioService {
     return this.http.post(`${base_url}/login/google`,{token})
     .pipe(
       tap((resp:any) =>{
-        console.log(resp);
+        // console.log(resp);
         localStorage.setItem('token',resp.token);
+        localStorage.setItem('email',resp.email);
       }
       )
     )
+
   }
+
 }

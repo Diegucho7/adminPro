@@ -48,10 +48,12 @@ export class LoginComponent implements AfterViewInit{
   }
     
   handleCredentialResponse(response: any){
-    console.log("Encoded JWT ID token: " + response.credential);
+    // console.log("Encoded JWT ID token: " + response.credential);
     this.usuarioService.loginGoogle(response.credential).
     subscribe(resp =>{
-      console.log({login:resp})
+      // console.log({login:resp})
+          this.route.navigateByUrl('/')
+
     })
   }
 
@@ -67,12 +69,16 @@ export class LoginComponent implements AfterViewInit{
                           localStorage.removeItem('email');
                         }
 
-                        },(err)=>{
-                          // Si sucede un error
+            // Navegar por el Dashboard
+            this.route.navigateByUrl('/');
 
-                          Swal.fire('Error',err.error.msg,'error');
 
-                        })
+            },(err)=>{
+              // Si sucede un error
+
+              Swal.fire('Error',err.error.msg,'error');
+
+            })
 
   }
 }
