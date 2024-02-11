@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { RegisterForm } from '../interfaces/register-form.interface';
 import { LoginForm } from '../interfaces/login-form.interface';
 import { environment  } from '../../environments/environment';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 const base_url = environment.base_url;
@@ -14,20 +15,24 @@ const base_url = environment.base_url;
 export class UsuarioService {
   
   
-  constructor(private http: HttpClient  ) { }
+  constructor(private http: HttpClient,
+    private router: Router,
+    private ngZone: NgZone) { }
 
-  validarToken(){
-    const token = localStorage.getItem('token')||'';
+  validarToken(): Observable<boolean> {
+    const token = localStorage.getItem('token') || '';
 
-    this.http.get(`${base_url}/login/renew`,{
-      headers:{
-        'x-token':token
+    return this.http.get(`${ base_url }/login/renew`, {
+      headers: {
+        'x-token': token
       }
-    }).pipe(
+    })
+    .pipe(
       tap((resp:any)=>{
         localStorage.setItem('token',resp.token);
       }),
-      map(resp => true)
+      map(resp => true),
+      catchError(error => of(false))
     );
 
   }
