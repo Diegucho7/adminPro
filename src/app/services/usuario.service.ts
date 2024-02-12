@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
-import { RegisterForm } from '../interfaces/register-form.interface';
-import { LoginForm } from '../interfaces/login-form.interface';
-import { environment  } from '../../environments/environment';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment  } from '../../environments/environment';
+import { Usuario } from '../models/usuario.model';
+import { RegisterForm } from '../interfaces/register-form.interface';
+import { LoginForm } from '../interfaces/login-form.interface';
 
 declare const google:any;
 
@@ -14,6 +15,8 @@ const base_url = environment.base_url;
   providedIn: 'root'
 })
 export class UsuarioService {
+
+  public usuario!: Usuario;
   
   handleCredentialResponse: any;
   constructor(private http: HttpClient,
@@ -43,6 +46,19 @@ export class UsuarioService {
     })
     .pipe(
       tap((resp:any)=>{
+        
+        // console.log(resp);
+        const {
+          email,
+          google,
+          nombre, 
+          apellido,
+          role,
+          uid, 
+          img
+        } = resp.usuario;
+        
+        this.usuario = new Usuario(nombre,apellido,email,'',img,google,role,uid);
         localStorage.setItem('token',resp.token);
       }),
       map(resp => true),
