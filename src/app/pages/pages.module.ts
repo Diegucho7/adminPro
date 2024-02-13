@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ComponentsModule } from '../components/components.module';
 import { SharedModule } from "../shared/shared.module";
@@ -15,6 +15,7 @@ import { DonaComponent } from '../components/dona/dona.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PomesasComponent } from './pomesas/pomesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         AccountSettingsComponent,
         PomesasComponent,
         RxjsComponent,
+        PerfilComponent,
     ],
     exports: [
         DashboardComponent,
@@ -39,7 +41,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         CommonModule,
         RouterOutlet,
         NgChartsModule, //Modulos de Graficos
-        
+        ReactiveFormsModule,
+
         FormsModule,
         SharedModule,
         ComponentsModule
