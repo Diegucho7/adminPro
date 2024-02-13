@@ -18,9 +18,9 @@ export class Usuario{
     get imagenUrl(){
         // /upload/usuario/no-image
         if(this.img){
-            return `${base_url}/upload/usuarios/${this.img}`;
+            return `${ base_url }/uploads/usuarios/${this.img}`;
         }else{  
-            return `${base_url}/upload/usuarios/no-img`;    
+            return `${ base_url }/uploads/usuarios/no-img`;    
         }
     }
 
