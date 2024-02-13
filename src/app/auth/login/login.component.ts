@@ -36,8 +36,8 @@ export class LoginComponent implements AfterViewInit{
     
     ngAfterViewInit(): void {
       
-      this.logout();
       this.googleInit();
+      this.logout();
   }
   googleInit(){
       google.accounts.id.initialize({
