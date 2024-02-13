@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 import Swal from 'sweetalert2';
@@ -25,13 +25,18 @@ export class LoginComponent implements AfterViewInit{
     remember: [false]
   });
   
+  
   constructor(private route: Router,
     private fb:FormBuilder,
-    private usuarioService: UsuarioService){  }
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private ngZone: NgZone){  }
     
     
     
     ngAfterViewInit(): void {
+      
+      this.logout();
       this.googleInit();
   }
   googleInit(){
@@ -80,5 +85,16 @@ export class LoginComponent implements AfterViewInit{
 
             })
 
+  }
+
+  logout(){
+    const email=localStorage.getItem('email')|| '';
+    google.accounts.id.revoke(email,()=> {
+      this.ngZone.run(()=>{
+        this.router.navigateByUrl('/login');
+      })
+      localStorage.removeItem('token');
+      localStorage.removeItem('email');
+    })
   }
 }
