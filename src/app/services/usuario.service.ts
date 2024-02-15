@@ -118,13 +118,13 @@ export class UsuarioService {
 
     logout(){
       const email=localStorage.getItem('email')|| '';
-      google.accounts.id.revoke(email,()=> {
-        this.ngZone.run(()=>{
-          this.router.navigateByUrl('/login');
-        })
+      // google.accounts.id.revoke(email,()=> {
+      //   this.ngZone.run(()=>{
+        //   })
+        // })
         localStorage.removeItem('token');
-        localStorage.removeItem('email');
-      })
+        // localStorage.removeItem('email');
+            this.router.navigateByUrl('/login');
     }
    }
   
