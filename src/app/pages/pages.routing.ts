@@ -9,6 +9,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PomesasComponent } from './pomesas/pomesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
 
 
 
@@ -25,7 +26,13 @@ const routes: Routes = [
       {path: 'rxjs', component: RxjsComponent, data: {titulo: 'Rxjs'}},
       {path: 'progress', component: ProgressComponent, data: {titulo: 'Progreso'}},
       {path: 'promesas', component: PomesasComponent, data: {titulo: 'Promesas'}},
-      {path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil'}},
+      {path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil de usuario'}},
+      
+      
+      //Mantenimientos
+      {path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Usuario de la aplicación'}},
+
+
     ]
   
   

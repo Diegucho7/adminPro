@@ -16,6 +16,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PomesasComponent } from './pomesas/pomesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { PerfilComponent } from './perfil/perfil.component';
         PomesasComponent,
         RxjsComponent,
         PerfilComponent,
+        UsuariosComponent,
     ],
     exports: [
         DashboardComponent,

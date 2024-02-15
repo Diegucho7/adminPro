@@ -19,6 +19,18 @@ export class SidebarService {
 
           ]
   
+    },
+    {   
+        titulo : "Mantenimiento",
+        icono: "fa-solid fa-screwdriver-wrench",
+          submenu:[
+            { titulo: 'Usuarios', url: 'usuarios' },
+            { titulo: 'Hospitales', url: 'hospitales' },
+            { titulo: 'medicos', url: 'medicos' },
+         
+
+          ]
+  
     }
   ]
 
