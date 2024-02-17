@@ -47,7 +47,8 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
 
         FormsModule,
         SharedModule,
-        ComponentsModule
+        ComponentsModule,
+        
     ]
 })
 export class PagesModule { }
