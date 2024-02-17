@@ -10,6 +10,8 @@ import { PomesasComponent } from './pomesas/pomesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
+import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
+import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 
 
 
@@ -31,6 +33,8 @@ const routes: Routes = [
       
       //Mantenimientos
       {path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Usuario de la aplicación'}},
+      {path: 'hospitales', component: HospitalesComponent, data: {titulo: 'Hospitales de la aplicación'}},
+      {path: 'medicos', component: MedicosComponent   , data: {titulo: 'Médicos de la aplicación'}},
 
 
     ]
