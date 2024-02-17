@@ -3,6 +3,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { Usuario } from '../../../models/usuario.model';
 import { CargarUsuario } from '../../../interfaces/cargar-usuarios.interface';
 import { BusquedasService } from '../../../services/busquedas.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usuarios',
@@ -60,4 +61,27 @@ export class UsuariosComponent implements OnInit{
         })
         return [];
     }
+
+    eliminarUsuario(usuario:Usuario){
+      Swal.fire({
+        title: "¿Borrar usuario?",
+        text: `Esta a punto de eliminar a ${usuario.nombre} ${usuario.apellido}`,
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Si, eliminar usuario"
+      }).then((result) => {
+        if (result.value) {
+          this.usuarioService.eliminarUsuario(usuario)
+          .subscribe(resp => 
+            Swal.fire('Usuario borrado',
+                      `${usuario.nombre} ${usuario.apellido} fue eliminado correctamente`,
+                      'success'
+              )
+            );
+          
+        }
+        
+      });
+    }
+
 }
