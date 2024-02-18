@@ -33,14 +33,15 @@ export class UsuariosComponent implements OnInit, OnDestroy{
   }
     ngOnInit(): void {
       this.CargarUsuarios();
+
       this.imgSubs = this.modalImagenService.nuevaImagen
       .pipe(
-        delay(100)
-      )
-      
+        delay(100))
       .subscribe(img=> 
         this.CargarUsuarios());
-    }       
+    
+      }
+
     
     CargarUsuarios(){
       this.cargando = true;
