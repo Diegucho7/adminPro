@@ -28,17 +28,6 @@ export class HospitalService {
                     };
                 }
 
-  // cargarHospitales(): Observable <Hospital[]>{
-  //   // localhost:3000/api/usuarios?desde=0
-    
-  //   const url = `${base_url}/hospitales`;
-    
-  //   return this.http.get<{ok:boolean, hospitales: Hospital[] }>(url,{headers: this.headers})
-  //                   .pipe(
-  //                     map(( resp: {ok:boolean, hospitales: Hospital[] }) => resp.hospitales)
-  //                   );
-                    
-  // }
 
   cargarHospitales( ): Observable<Hospital[]> {
  
