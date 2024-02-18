@@ -52,6 +52,7 @@ export class HospitalService {
           .pipe(
             map( (resp: { ok: boolean, hospitales: Hospital[] } ) => resp.hospitales )
           );
+          
  
   }
   crearHospital(nombre:string ) {

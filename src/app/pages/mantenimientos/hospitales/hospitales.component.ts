@@ -4,6 +4,7 @@ import { HospitalService } from '../../../services/hospital.service';
 import { Hospital } from '../../../models/hospital.model';
 import { ModalImagenService } from '../../../services/modal-imagen.service';
 import { Subscription, delay } from 'rxjs';
+import { BusquedasService } from '../../../services/busquedas.service';
 
 @Component({
   selector: 'app-hospitales',
@@ -15,9 +16,12 @@ export class HospitalesComponent implements OnInit{
   public hospitales: Hospital[] = [];
   public cargando: boolean = true;
   private imgSubs?: Subscription;
+
+  public hospitalesTemp:Hospital[] =  [];
   constructor(
               private hospitalService:HospitalService,
-              private modalImagenService: ModalImagenService
+              private modalImagenService: ModalImagenService,
+              private busquedaService: BusquedasService
   ){}
   ngOnInit(): void {
     this.cargarHospitales();
@@ -37,7 +41,13 @@ export class HospitalesComponent implements OnInit{
                         .subscribe(hospitales=>{
                           this.cargando = false;
                          this.hospitales = hospitales; 
+
+                         this.hospitales   = hospitales;
+                         this.hospitalesTemp = hospitales;
+                         this.cargando = false;
                         })
+
+
 
   }
 
@@ -78,5 +88,17 @@ export class HospitalesComponent implements OnInit{
     this.modalImagenService.abrirModal('hospitales', hospital._id, hospital.img);
   }
 
+  buscar(termino:string){
+    if (termino.length === 0) {
+      return this.hospitales = this.hospitalesTemp;
+    }
+    
+    this.busquedaService.buscar('hospitales',termino)
+      .subscribe(resultados => {
+        this.hospitales = resultados as Hospital[];
+      })
+      return [];
+
+  }
   
 }

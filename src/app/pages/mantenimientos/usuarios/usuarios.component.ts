@@ -5,7 +5,7 @@ import { Usuario } from '../../../models/usuario.model';
 import { BusquedasService } from '../../../services/busquedas.service';
 import { ModalImagenService } from '../../../services/modal-imagen.service';
 import { UsuarioService } from '../../../services/usuario.service';
-import { Subscription, delay } from 'rxjs';
+import { Observable, Observer, Subscription, delay } from 'rxjs';
 
 @Component({
   selector: 'app-usuarios',
@@ -37,6 +37,7 @@ export class UsuariosComponent implements OnInit, OnDestroy{
       this.imgSubs = this.modalImagenService.nuevaImagen
       .pipe(
         delay(100))
+      
       .subscribe(img=> 
         this.CargarUsuarios());
     
@@ -73,8 +74,8 @@ export class UsuariosComponent implements OnInit, OnDestroy{
       }
       
       this.busquedaService.buscar('usuarios',termino)
-        .subscribe(resultados => {
-          this.usuarios = resultados;
+        .subscribe((resultados) => {
+          this.usuarios = resultados as Usuario[];
         })
         return [];
     }
