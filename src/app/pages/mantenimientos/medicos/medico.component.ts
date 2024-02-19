@@ -35,7 +35,7 @@ export class MedicoComponent implements OnInit {
     this.activateRoute.params
     .subscribe( ({id}) => this.cargarMedico(id));
     // this.medicoService.obtenerMedicoPorId
-
+    // console.log(this.hospitalSeleccionado?.img)
 this.medicoForm = this.fb.group({
   nombre: ['', Validators.required],
   apellido: ['', Validators.required],
@@ -54,10 +54,10 @@ this.medicoForm = this.fb.group({
 
     this.medicoService.obtenerMedicoPorId(id)
                       .subscribe((medico:any) =>{
-                        const {nombre, apellido, hospital:{_id}} = medico;
+                        const {nombre, apellido,hospital:{ _id }} = medico;
                         this.medicoSeleccionado = medico;
-                        this.medicoForm.setValue({nombre,apellido,hospital:_id})
-                      })
+                        this.medicoForm.setValue({nombre,apellido,hospital: _id})
+                      });
   }
 
   cargarHospitales(){
@@ -69,12 +69,28 @@ this.medicoForm = this.fb.group({
 
   guardarMedico(){
     const {nombre,apellido} =this.medicoForm.value;
-    this.medicoService.crearMedico(this.medicoForm.value)
-      .subscribe((resp:any) =>{
-        console.log(resp);
-        Swal.fire('Creado',`${nombre} ${apellido} creado correctamente`, 'success');
-        this.router.navigateByUrl(`/dashboard/medico/${resp.medico._id}`)
+    
+    if (this.medicoSeleccionado) {
+      //Actualizar
+      const data = {
+        ...this.medicoForm.value,
+        _id:this.medicoSeleccionado._id
+      } 
+      this.medicoService.actualizarMedico(data)
+      .subscribe(resp=>{
+        console.log(resp )
+        Swal.fire('Actualizado',`${nombre} ${apellido} actualizado correctamente`, 'success');
       })
+    }else{
+      //Crear
+      this.medicoService.crearMedico(this.medicoForm.value)
+        .subscribe((resp:any) =>{
+          Swal.fire('Creado',`${nombre} ${apellido} creado correctamente`, 'success');
+          this.router.navigateByUrl(`/dashboard/medico/${resp.medico._id}`)
+        })
+    }
+
+
   }
 
 }
