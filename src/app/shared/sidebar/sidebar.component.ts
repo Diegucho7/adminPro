@@ -18,7 +18,6 @@ export class SidebarComponent {
                {
                 this.usuario = usuarioService.usuario;
                   this.menuItems = sidebarService.menu
-                  console.log(this.menuItems);
     
   }
   

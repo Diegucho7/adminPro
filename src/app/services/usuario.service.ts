@@ -54,7 +54,6 @@ export class UsuarioService {
     .pipe(
       map((resp:any)=>{
         
-        console.log(resp); 
         const {
           nombre,apellido,email,img,google,role,uid
         } = resp.usuario;
