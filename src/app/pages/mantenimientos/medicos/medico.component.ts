@@ -34,7 +34,8 @@ export class MedicoComponent implements OnInit {
   ngOnInit(): void {
 
     this.activateRoute.params
-    .subscribe( ({id}) => this.cargarMedico(id));
+    .subscribe( ({id}) => 
+    {this.cargarMedico(id)});
     // this.medicoService.obtenerMedicoPorId
     // console.log(this.hospitalSeleccionado?.img)
 this.medicoForm = this.fb.group({
