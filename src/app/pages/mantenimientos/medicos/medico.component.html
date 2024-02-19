@@ -11,13 +11,13 @@
                 (ngSubmit)="guardarMedico()"
                 >
     
-                    <div class="form-group row"
-                       
+                <div class="form-group row"
+                *ngIf="medicoSeleccionado"
                     >
                         <label for="exampleInputuname3" class="col-sm-3 control-label">Foto</label>
                         <div class="col-sm-9">
                             <div class="input-group">
-                                <img src="http://localhost:3000/api/uploads/usuarios/161d10bc-0fee-4515-b0a3-3064828fdfd7.jpeg" alt=""
+                                <img [src]="medicoSeleccionado.img | imagen:'medicos'" alt=""
                                 class="w200">
                             </div>
                         </div>
@@ -80,15 +80,15 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 animated fadeIn fast" *ngIf="hospitalSeleccionado">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Hospital</h4>
-                <h6 class="card-subtitle">{{hospitalSeleccionado?.nombre}}</h6>
+                <h6 class="card-subtitle">{{hospitalSeleccionado.nombre}}</h6>
 
                
-                    <img [src]="hospitalSeleccionado?.img | imagen: 'hospitales'" alt=""
-                    class="w200">
+                    <img [src]="hospitalSeleccionado.img | imagen: 'hospitales'" alt=""
+                    class="img-thumbnail">
              
             </div>
         </div>

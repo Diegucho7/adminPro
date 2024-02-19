@@ -44,11 +44,26 @@ export class MedicoService {
           
  
   }
+  obtenerMedicoPorId(id:string ): Observable<Medico> {
+ 
+    const url = `${ base_url }/medicos/${id}`;
+    return this.http.get<{ ok: boolean, medico: Medico }>(url,
+        {
+          headers: {
+            'x-token': this.token
+          }
+        })
+          .pipe(
+            map( (resp: { ok: boolean, medico: Medico } ) => resp.medico )
+          );
+          
+ 
+  }
 
-  crearMedico(medico:Medico ) {
+  crearMedico(medico:{nombre:string, apellido: string, hospital:string} ) {
  
     const url = `${ base_url }/medicos`;
-    return this.http.post<{ ok: boolean, medicos: Medico[] }>(url,medico,this.headers);
+    return this.http.post<{ ok: boolean, medico: Medico[] }>(url,medico,this.headers);
          
  
   }
