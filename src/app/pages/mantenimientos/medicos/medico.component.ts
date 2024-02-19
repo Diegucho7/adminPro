@@ -6,6 +6,7 @@ import { MedicoService } from '../../../services/medico.service';
 import { Medico } from '../../../models/medico.model';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-medico',
@@ -58,17 +59,16 @@ this.medicoForm = this.fb.group({
 
     this.medicoService.obtenerMedicoPorId(id)
     
-                      .subscribe((medico:any) =>{
-
-                        if (!medico) {
-                          return this.router.navigateByUrl(`/dashboard/medicos`)
-                        }
-
-
-                        const {nombre, apellido,hospital:{ _id }} = medico;
-                        this.medicoSeleccionado = medico;
-                        this.medicoForm.setValue({nombre,apellido,hospital: _id})
-                      });
+                              .pipe(
+                                delay(100)
+                              )
+                              .subscribe( (medico:any) => {
+                                  const { nombre,apellido, hospital: { _id } } = medico
+                                  this.medicoSeleccionado = medico
+                                  this.medicoForm.setValue( { nombre: nombre,apellido:apellido, hospital: _id} )
+                              }, error => {
+                                return this.router.navigateByUrl(`/dashboard/medicos`);
+                              })
   }
 
   cargarHospitales(){
