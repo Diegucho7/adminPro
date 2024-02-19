@@ -48,11 +48,7 @@ export class MedicoService {
  
     const url = `${ base_url }/medicos/${id}`;
     return this.http.get<{ ok: boolean, medico: Medico }>(url,
-        {
-          headers: {
-            'x-token': this.token
-          }
-        })
+        this.headers)
           .pipe(
             map( (resp: { ok: boolean, medico: Medico } ) => resp.medico )
           );

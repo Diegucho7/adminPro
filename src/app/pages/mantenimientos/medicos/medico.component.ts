@@ -54,7 +54,7 @@ this.medicoForm = this.fb.group({
 
     this.medicoService.obtenerMedicoPorId(id)
                       .subscribe(medico =>{
-                        console.log(medico)
+                        this.medicoSeleccionado = medico
                       })
   }
 
