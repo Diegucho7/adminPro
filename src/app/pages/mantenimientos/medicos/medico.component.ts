@@ -53,8 +53,10 @@ this.medicoForm = this.fb.group({
   cargarMedico(id:string){
 
     this.medicoService.obtenerMedicoPorId(id)
-                      .subscribe(medico =>{
-                        this.medicoSeleccionado = medico
+                      .subscribe((medico:any) =>{
+                        const {nombre, apellido, hospital:{_id}} = medico;
+                        this.medicoSeleccionado = medico;
+                        this.medicoForm.setValue({nombre,apellido,hospital:_id})
                       })
   }
 
