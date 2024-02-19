@@ -52,8 +52,19 @@ this.medicoForm = this.fb.group({
 
   cargarMedico(id:string){
 
+    if (id === 'nuevo') {
+      return;
+    }
+
     this.medicoService.obtenerMedicoPorId(id)
+    
                       .subscribe((medico:any) =>{
+
+                        if (!medico) {
+                          return this.router.navigateByUrl(`/dashboard/medicos`)
+                        }
+
+
                         const {nombre, apellido,hospital:{ _id }} = medico;
                         this.medicoSeleccionado = medico;
                         this.medicoForm.setValue({nombre,apellido,hospital: _id})
@@ -61,6 +72,8 @@ this.medicoForm = this.fb.group({
   }
 
   cargarHospitales(){
+    
+
     this.hospitalSevice.cargarHospitales()
                         .subscribe((hospitales:Hospital[]) =>{
                           this.hospitales = hospitales;
