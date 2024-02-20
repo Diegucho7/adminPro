@@ -13,6 +13,7 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
 import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 
 
@@ -25,6 +26,7 @@ const routes: Routes = [
     [
       {path: '', component: DashboardComponent, data: {titulo: 'Dashboard'}},
       {path: 'acount-settings', component: AccountSettingsComponent, data: {titulo: 'acount-settings'}},
+      {path: 'buscar/:termino', component: BusquedaComponent, data: {titulo: 'busquedas'}},
       {path: 'grafica1', component: GraficaComponent, data: {titulo: 'Grafica'}},
       {path: 'rxjs', component: RxjsComponent, data: {titulo: 'Rxjs'}},
       {path: 'progress', component: ProgressComponent, data: {titulo: 'Progreso'}},
@@ -33,10 +35,10 @@ const routes: Routes = [
       
       
       //Mantenimientos
-      {path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Usuario de la aplicación'}},
       {path: 'hospitales', component: HospitalesComponent, data: {titulo: 'Hospitales de la aplicación'}},
       {path: 'medicos', component: MedicosComponent   , data: {titulo: 'Médicos de la aplicación'}},
       {path: 'medico/:id', component: MedicoComponent   , data: {titulo: 'Médicos de la aplicación'}},
+      {path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Usuario de la aplicación'}},
 
 
     ]

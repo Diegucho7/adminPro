@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
-import { RouterLink,RouterLinkActive } from '@angular/router';
+import { Router, RouterLink,RouterLinkActive, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,9 @@ import { RouterLink,RouterLinkActive } from '@angular/router';
   imports: [
     CommonModule,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    FormsModule,
+    RouterModule
   ]
 })
 export class SharedModule { }
