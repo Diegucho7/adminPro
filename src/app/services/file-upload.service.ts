@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import{environment} from '../../environments/environment'
+import Swal from 'sweetalert2';
 
 
 const base_url = environment.base_url;
@@ -35,8 +36,8 @@ export class FileUploadService {
       if(data.ok){
         return data.nombreArchivo;
       }else{
-        console.log(data.msg);
-        return false;
+             console.log(data.msg);
+                return false;
       }
 
 
