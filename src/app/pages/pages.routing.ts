@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivateFn } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { authGuard } from '../guards/auth.guard';
 import { PagesComponent } from './pages.component';
@@ -14,6 +14,7 @@ import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.comp
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { adminGuard } from '../guards/admin.guard';
 
 
 
@@ -38,7 +39,10 @@ const routes: Routes = [
       {path: 'hospitales', component: HospitalesComponent, data: {titulo: 'Hospitales de la aplicación'}},
       {path: 'medicos', component: MedicosComponent   , data: {titulo: 'Médicos de la aplicación'}},
       {path: 'medico/:id', component: MedicoComponent   , data: {titulo: 'Médicos de la aplicación'}},
-      {path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Usuario de la aplicación'}},
+
+
+      //Rutas de Admin
+      {path: 'usuarios',canActivate: [adminGuard],component: UsuariosComponent, data: {titulo: 'Usuario de la aplicación'}},
 
 
     ]
